@@ -83,14 +83,16 @@ class Token {
   [[nodiscard]] auto spell() const -> const std::string&;
   [[nodiscard]] auto name() const -> const std::string&;
 
-  static auto spell(TokenKind kind) -> const std::string&;
-  static auto name(TokenKind kind) -> const std::string&;
+  [[nodiscard]] static auto spell(TokenKind kind) -> const std::string&;
+  [[nodiscard]] static auto name(TokenKind kind) -> const std::string&;
 
-  static auto spell(BuiltinKind kind) -> const std::string&;
+  [[nodiscard]] static auto spell(BuiltinKind kind) -> const std::string&;
 
-  static auto isBuiltinTypeTrait(BuiltinKind kind) -> bool;
+  [[nodiscard]] static auto isBuiltinTypeTrait(BuiltinKind kind) -> bool;
+  [[nodiscard]] static auto isBuiltinFunction(BuiltinKind kind) -> bool;
 
-  auto isBuiltinTypeTrait() const -> bool;
+  [[nodiscard]] auto isBuiltinTypeTrait() const -> bool;
+  [[nodiscard]] auto isBuiltinFunction() const -> bool;
 
  private:
   std::uint64_t kind_ : 8;

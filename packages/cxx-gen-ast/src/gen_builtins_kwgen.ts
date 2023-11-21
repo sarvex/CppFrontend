@@ -28,6 +28,8 @@ export function gen_builtins_kwgen({ output }: { output: string }) {
   tokens.BUILTIN_TYPE_TRAITS.forEach((tk) => emit(tk));
   emit();
   tokens.BUILTIN_CASTS.forEach((tk) => emit(tk));
+  emit();
+  tokens.BUILTIN_FUNCTIONS.forEach((tk) => emit(tk));
 
   const out = `%no-enums
 %token-prefix=cxx::BuiltinKind::T_

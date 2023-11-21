@@ -103,4 +103,24 @@ auto Token::isBuiltinTypeTrait() const -> bool {
          isBuiltinTypeTrait(static_cast<BuiltinKind>(value_.intValue));
 }
 
+auto Token::isBuiltinFunction(BuiltinKind kind) -> bool {
+#define BUILTIN_FUNCTION(s, _) \
+  case BuiltinKind::T_##s:     \
+    return true;
+
+  switch (kind) {
+    FOR_EACH_BUILTIN_FUNCTION(BUILTIN_FUNCTION)
+
+    default:
+      return false;
+  }  // switch
+
+#undef BUILTIN_FUNCTION
+}
+
+auto Token::isBuiltinFunction() const -> bool {
+  return is(TokenKind::T_BUILTIN) &&
+         isBuiltinFunction(static_cast<BuiltinKind>(value_.intValue));
+}
+
 }  // namespace cxx

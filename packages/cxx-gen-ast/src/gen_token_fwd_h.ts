@@ -56,6 +56,12 @@ export function gen_token_fwd_h({ output }: { output: string }) {
   );
 
   emit();
+  emit("#define FOR_EACH_BUILTIN_FUNCTION(V) \\");
+  tokens.BUILTIN_FUNCTIONS.forEach((tk) =>
+    emit(`  V(${tk.toUpperCase()}, "${tk}") \\`)
+  );
+
+  emit();
   emit("#define FOR_EACH_TOKEN_ALIAS(V) \\");
   tokens.TOKEN_ALIASES.forEach(([tk, other]) =>
     emit(`  V(${tk.toUpperCase()}, ${other}) \\`)
@@ -89,7 +95,8 @@ enum struct TokenKind : std::uint8_t {
 
 #define FOR_EACH_BUILTIN(V) \\
   FOR_EACH_BUILTIN_TYPE_TRAIT(V) \\
-  FOR_EACH_BUILTIN_CAST(V)
+  FOR_EACH_BUILTIN_CAST(V) \\
+  FOR_EACH_BUILTIN_FUNCTION(V)
 
 enum struct BuiltinKind {
   T_IDENTIFIER,
