@@ -239,6 +239,9 @@ auto ASTDecoder::decodeExpression(const void* ptr, io::Expression type)
     case io::Expression_ThisExpression:
       return decodeThisExpression(
           reinterpret_cast<const io::ThisExpression*>(ptr));
+    case io::Expression_BuiltinExpression:
+      return decodeBuiltinExpression(
+          reinterpret_cast<const io::BuiltinExpression*>(ptr));
     case io::Expression_NestedExpression:
       return decodeNestedExpression(
           reinterpret_cast<const io::NestedExpression*>(ptr));
@@ -1687,6 +1690,14 @@ auto ASTDecoder::decodeThisExpression(const io::ThisExpression* node)
   if (!node) return nullptr;
 
   auto ast = new (pool_) ThisExpressionAST();
+  return ast;
+}
+
+auto ASTDecoder::decodeBuiltinExpression(const io::BuiltinExpression* node)
+    -> BuiltinExpressionAST* {
+  if (!node) return nullptr;
+
+  auto ast = new (pool_) BuiltinExpressionAST();
   return ast;
 }
 

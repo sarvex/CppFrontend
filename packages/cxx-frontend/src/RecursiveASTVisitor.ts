@@ -817,6 +817,17 @@ export class RecursiveASTVisitor<Context> extends ASTVisitor<Context, void> {
   visitThisExpression(node: ast.ThisExpressionAST, context: Context): void {}
 
   /**
+   * Visit a BuiltinExpression node.
+   *
+   * @param node The node to visit.
+   * @param context The context.
+   */
+  visitBuiltinExpression(
+    node: ast.BuiltinExpressionAST,
+    context: Context,
+  ): void {}
+
+  /**
    * Visit a NestedExpression node.
    *
    * @param node The node to visit.

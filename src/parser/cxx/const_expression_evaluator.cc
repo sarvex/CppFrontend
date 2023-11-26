@@ -101,6 +101,11 @@ auto ConstExpressionEvaluator::operator()(IdExpressionAST* ast)
   return std::nullopt;
 }
 
+auto ConstExpressionEvaluator::operator()(BuiltinExpressionAST* ast)
+    -> std::optional<ConstValue> {
+  return std::nullopt;
+}
+
 auto ConstExpressionEvaluator::operator()(LambdaExpressionAST* ast)
     -> std::optional<ConstValue> {
   return std::nullopt;

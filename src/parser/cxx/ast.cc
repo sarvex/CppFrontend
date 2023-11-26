@@ -946,6 +946,16 @@ auto ThisExpressionAST::lastSourceLocation() -> SourceLocation {
   return {};
 }
 
+auto BuiltinExpressionAST::firstSourceLocation() -> SourceLocation {
+  if (auto loc = cxx::firstSourceLocation(builtinLoc)) return loc;
+  return {};
+}
+
+auto BuiltinExpressionAST::lastSourceLocation() -> SourceLocation {
+  if (auto loc = cxx::lastSourceLocation(builtinLoc)) return loc;
+  return {};
+}
+
 auto NestedExpressionAST::firstSourceLocation() -> SourceLocation {
   if (auto loc = cxx::firstSourceLocation(lparenLoc)) return loc;
   if (auto loc = cxx::firstSourceLocation(expression)) return loc;

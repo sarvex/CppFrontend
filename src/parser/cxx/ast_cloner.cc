@@ -1108,6 +1108,19 @@ void ASTCloner::visit(ThisExpressionAST* ast) {
   copy->thisLoc = ast->thisLoc;
 }
 
+void ASTCloner::visit(BuiltinExpressionAST* ast) {
+  auto copy = new (arena_) BuiltinExpressionAST();
+  copy_ = copy;
+
+  copy->valueCategory = ast->valueCategory;
+
+  copy->type = ast->type;
+
+  copy->builtinLoc = ast->builtinLoc;
+
+  copy->builtinKind = ast->builtinKind;
+}
+
 void ASTCloner::visit(NestedExpressionAST* ast) {
   auto copy = new (arena_) NestedExpressionAST();
   copy_ = copy;

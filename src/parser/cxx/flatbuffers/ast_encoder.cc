@@ -2151,6 +2151,16 @@ void ASTEncoder::visit(ThisExpressionAST* ast) {
   type_ = io::Expression_ThisExpression;
 }
 
+void ASTEncoder::visit(BuiltinExpressionAST* ast) {
+  auto builtinLoc = encodeSourceLocation(ast->builtinLoc);
+
+  io::BuiltinExpression::Builder builder{fbb_};
+  builder.add_builtin_loc(builtinLoc.o);
+
+  offset_ = builder.Finish().Union();
+  type_ = io::Expression_BuiltinExpression;
+}
+
 void ASTEncoder::visit(NestedExpressionAST* ast) {
   auto lparenLoc = encodeSourceLocation(ast->lparenLoc);
 

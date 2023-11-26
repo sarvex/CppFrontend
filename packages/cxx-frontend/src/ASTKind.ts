@@ -84,6 +84,7 @@ export enum ASTKind {
   StringLiteralExpression,
   UserDefinedStringLiteralExpression,
   ThisExpression,
+  BuiltinExpression,
   NestedExpression,
   IdExpression,
   LambdaExpression,

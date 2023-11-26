@@ -262,6 +262,10 @@ void DefaultASTVisitor::visit(ThisExpressionAST* ast) {
   cxx_runtime_error("visit(ThisExpressionAST): not implemented");
 }
 
+void DefaultASTVisitor::visit(BuiltinExpressionAST* ast) {
+  cxx_runtime_error("visit(BuiltinExpressionAST): not implemented");
+}
+
 void DefaultASTVisitor::visit(NestedExpressionAST* ast) {
   cxx_runtime_error("visit(NestedExpressionAST): not implemented");
 }

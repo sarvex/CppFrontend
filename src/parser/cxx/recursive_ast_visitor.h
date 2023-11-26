@@ -151,6 +151,7 @@ class RecursiveASTVisitor : public ASTVisitor {
   void visit(StringLiteralExpressionAST* ast) override;
   void visit(UserDefinedStringLiteralExpressionAST* ast) override;
   void visit(ThisExpressionAST* ast) override;
+  void visit(BuiltinExpressionAST* ast) override;
   void visit(NestedExpressionAST* ast) override;
   void visit(IdExpressionAST* ast) override;
   void visit(LambdaExpressionAST* ast) override;

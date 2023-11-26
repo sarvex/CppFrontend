@@ -558,6 +558,8 @@ void RecursiveASTVisitor::visit(UserDefinedStringLiteralExpressionAST* ast) {}
 
 void RecursiveASTVisitor::visit(ThisExpressionAST* ast) {}
 
+void RecursiveASTVisitor::visit(BuiltinExpressionAST* ast) {}
+
 void RecursiveASTVisitor::visit(NestedExpressionAST* ast) {
   acceptExpression(ast->expression);
 }

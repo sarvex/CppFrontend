@@ -133,6 +133,7 @@ union Expression {
   StringLiteralExpression,
   UserDefinedStringLiteralExpression,
   ThisExpression,
+  BuiltinExpression,
   NestedExpression,
   IdExpression,
   LambdaExpression,
@@ -853,6 +854,10 @@ table UserDefinedStringLiteralExpression /* ExpressionAST */ {
 
 table ThisExpression /* ExpressionAST */ {
   this_loc: SourceLocation;
+}
+
+table BuiltinExpression /* ExpressionAST */ {
+  builtin_loc: SourceLocation;
 }
 
 table NestedExpression /* ExpressionAST */ {

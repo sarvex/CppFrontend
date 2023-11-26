@@ -769,6 +769,10 @@ void ASTPrinter::visit(ThisExpressionAST* ast) {
   fmt::print(out_, "{}\n", "this-expression");
 }
 
+void ASTPrinter::visit(BuiltinExpressionAST* ast) {
+  fmt::print(out_, "{}\n", "builtin-expression");
+}
+
 void ASTPrinter::visit(NestedExpressionAST* ast) {
   fmt::print(out_, "{}\n", "nested-expression");
   accept(ast->expression, "expression");

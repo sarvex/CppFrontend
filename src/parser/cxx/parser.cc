@@ -1279,6 +1279,13 @@ auto Parser::parse_primary_expression(ExpressionAST*& yyast,
                                    : IdExpressionContext::kExpression)) {
     yyast = idExpression;
     return true;
+  } else if (LA().isBuiltinFunction()) {
+    auto ast = new (pool_) BuiltinExpressionAST();
+    yyast = ast;
+
+    ast->builtinKind = static_cast<BuiltinKind>(LA().value().intValue);
+    ast->builtinLoc = consumeToken();
+    return true;
   } else {
     return false;
   }

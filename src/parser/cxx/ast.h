@@ -1224,6 +1224,21 @@ class ThisExpressionAST final : public ExpressionAST {
   auto lastSourceLocation() -> SourceLocation override;
 };
 
+class BuiltinExpressionAST final : public ExpressionAST {
+ public:
+  static constexpr ASTKind Kind = ASTKind::BuiltinExpression;
+
+  BuiltinExpressionAST() : ExpressionAST(Kind) {}
+
+  SourceLocation builtinLoc;
+  BuiltinKind builtinKind = BuiltinKind::T_IDENTIFIER;
+
+  void accept(ASTVisitor* visitor) override { visitor->visit(this); }
+
+  auto firstSourceLocation() -> SourceLocation override;
+  auto lastSourceLocation() -> SourceLocation override;
+};
+
 class NestedExpressionAST final : public ExpressionAST {
  public:
   static constexpr ASTKind Kind = ASTKind::NestedExpression;
@@ -4034,6 +4049,9 @@ auto visit(Visitor&& visitor, ExpressionAST* ast) {
     case ThisExpressionAST::Kind:
       return std::invoke(std::forward<Visitor>(visitor),
                          static_cast<ThisExpressionAST*>(ast));
+    case BuiltinExpressionAST::Kind:
+      return std::invoke(std::forward<Visitor>(visitor),
+                         static_cast<BuiltinExpressionAST*>(ast));
     case NestedExpressionAST::Kind:
       return std::invoke(std::forward<Visitor>(visitor),
                          static_cast<NestedExpressionAST*>(ast));

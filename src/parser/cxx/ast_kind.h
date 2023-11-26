@@ -89,6 +89,7 @@ enum struct ASTKind {
   StringLiteralExpression,
   UserDefinedStringLiteralExpression,
   ThisExpression,
+  BuiltinExpression,
   NestedExpression,
   IdExpression,
   LambdaExpression,
